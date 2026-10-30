@@ -1,0 +1,75 @@
+{
+  "note": "멀티모달 모델(Claude)에 출근룩 이미지 4장을 수동으로 입력해 받은 분해 결과입니다. 원본 이미지는 타인의 저작물이므로 저장소에 포함하지 않고, 분해된 텍스트 결과만 남깁니다.",
+  "collectedAt": "2026-10-31",
+  "method": "manual multimodal call (no API key yet)",
+  "schemaVersion": 1,
+  "fields": {
+    "top": "상의 종류, 색, 핏, 레이어드 여부",
+    "bottom": "하의 종류, 색, 핏, 기장",
+    "shoes": "신발 종류, 색",
+    "silhouette": "상하의 볼륨 조합",
+    "dressCode": "정장 / 비즈니스 캐주얼 / 캐주얼",
+    "confidence": "확실 / 추정 / 확인불가"
+  },
+  "results": [
+    {
+      "id": "look-01",
+      "imageType": "전신 스트리트 스냅",
+      "top": { "item": "니트 카디건", "color": "검정", "fit": "슬림", "layered": "회색 이너 탑", "confidence": "확실" },
+      "bottom": { "item": "데님", "color": "연청(워시드)", "fit": "와이드", "length": "긴 기장", "confidence": "확실" },
+      "shoes": { "item": null, "color": "검정 추정", "confidence": "확인불가", "reason": "바지 기장에 가려 거의 보이지 않음" },
+      "silhouette": "상의 타이트 + 하의 와이드",
+      "dressCode": "캐주얼",
+      "material": { "value": "니트 추정", "confidence": "추정" }
+    },
+    {
+      "id": "look-02",
+      "imageType": "거울 셀카, 상반신만",
+      "top": { "item": "V넥 니트", "color": "네이비", "fit": "레귤러", "layered": "흰 셔츠(소매·밑단 노출)", "confidence": "확실" },
+      "bottom": { "item": "슬랙스(핀턱)", "color": "베이지~카키", "fit": null, "length": null, "confidence": "확인불가", "reason": "프레임 밖이라 기장과 핏 판단 불가" },
+      "shoes": { "item": null, "color": null, "confidence": "확인불가", "reason": "프레임 밖" },
+      "silhouette": "상의만 판단 가능",
+      "dressCode": "비즈니스 캐주얼",
+      "material": { "value": "니트 추정", "confidence": "추정" }
+    },
+    {
+      "id": "look-03",
+      "imageType": "전신, 자연광",
+      "top": { "item": "하프집 니트", "color": "다크브라운", "fit": "오버핏", "layered": "흰 이너 티(밑단 노출)", "confidence": "확실" },
+      "bottom": { "item": "와이드 팬츠", "color": "아이보리", "fit": "와이드", "length": "긴 기장", "confidence": "확실" },
+      "shoes": { "item": "스니커즈", "color": "흰색", "confidence": "확실" },
+      "silhouette": "상하의 모두 볼륨",
+      "dressCode": "캐주얼",
+      "material": { "value": "골지 니트 추정", "confidence": "추정" }
+    },
+    {
+      "id": "look-04",
+      "imageType": "전신, 역광",
+      "top": { "item": "하프집 니트", "color": "검정", "fit": "오버핏", "layered": "흰 이너", "confidence": "확실" },
+      "bottom": { "item": "와이드 슬랙스", "color": "차콜~그레이", "fit": "와이드", "length": "긴 기장", "confidence": "확실" },
+      "shoes": { "item": "스니커즈", "color": "흰색", "confidence": "확실" },
+      "silhouette": "상하의 모두 볼륨",
+      "dressCode": "캐주얼 ~ 비즈니스 캐주얼",
+      "material": { "value": "조직 확인 어려움", "confidence": "확인불가", "reason": "역광으로 어두운 상의의 디테일이 날아감" }
+    }
+  ],
+  "accuracy": {
+    "topAndBottomType": "4 / 4",
+    "color": "4 / 4",
+    "silhouette": "4 / 4",
+    "shoes": "2 / 4",
+    "material": "0 / 4 (전부 추정 이하)"
+  },
+  "findings": [
+    "상의·하의의 종류, 색, 실루엣은 네 장 모두 정확히 분해되었습니다.",
+    "신발은 바지에 가리거나(look-01) 프레임 밖인 경우(look-02) 판단이 불가능했습니다. 비워 두고 사용자가 채우는 설계가 필요합니다.",
+    "소재는 어느 장에서도 확정할 수 없었습니다. 추정으로만 표시해야 합니다.",
+    "역광이나 어두운 색 상의에서는 조직과 디테일이 날아갑니다.",
+    "네 장만으로도 반복 패턴이 드러났습니다: 상의에 볼륨 또는 레이어드, 하의는 와이드, 전체적으로 뉴트럴 톤. 취향 패턴 기능의 근거가 됩니다."
+  ],
+  "limits": [
+    "API 키가 없어 자동화된 호출이 아니라 수동 호출로 확인했습니다. 앱에서는 Convex action을 통해 같은 요청을 보냅니다.",
+    "표본이 4장이라 정확도 수치는 경향일 뿐입니다.",
+    "브랜드와 품번은 시도하지 않았습니다. No-go입니다."
+  ]
+}
